@@ -6,3 +6,10 @@ services:
     ports:
       - "8080:8080"
     restart: unless-stopped
+
+  duckdb:
+    image: datacatering/duckdb:v1.4.1
+    ports:
+      - "4213:4213"
+    restart: unless-stopped
+
