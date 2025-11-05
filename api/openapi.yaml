@@ -1,14 +1,12 @@
 openapi: 3.0.4
 info:
   title: Sample API
-  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  description: api
   version: 0.1.9
 
 servers:
-  - url: http://api.example.com/v1
-    description: Optional server description, e.g. Main (production) server
-  - url: http://staging-api.example.com
-    description: Optional server description, e.g. Internal staging server for testing
+  - url: http://localhost/v1
+    description: main production very much server
 
 paths:
   /add:
@@ -16,7 +14,7 @@ paths:
       summary: 
       responses:
         '200':
-          description: A list of users
+          description: add a cached item
           content:
             application/json:
               schema:
@@ -25,8 +23,6 @@ paths:
                   type: object
                   properties:
                     id:
-                      type: integer
-                    name:
                       type: string
         '400':
           description: Invalid request (e.g., missing or invalid parameters)
@@ -37,17 +33,7 @@ paths:
                 properties:
                   error:
                     type: string
-                    example: "Invalid query parameter"
-        '404':
-          description: Users not found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: "No users found"
+                    example: "Invalid query parameter format for adding a cached entry: {'text': 'abc123'}"
         '500':
           description: Internal server error
           content:
@@ -81,17 +67,7 @@ paths:
                 properties:
                   error:
                     type: string
-                    example: "Invalid query parameter"
-        '404':
-          description: Users not found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  error:
-                    type: string
-                    example: "No users found"
+                    example: "Invalid query parameter, add info {'id': 'my-cache-uuid4'} of cache"
         '500':
           description: Internal server error
           content:
